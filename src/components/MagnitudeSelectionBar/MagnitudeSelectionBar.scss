@@ -1,0 +1,15 @@
+@import "../../styles/utils/variables.scss";
+
+.side-chart {
+  border-left: 1px solid $white;
+  min-height: 100vh;
+  padding: 42px 36px 42px 70px;
+
+  &__title {
+    margin-bottom: 41.5px;
+  }
+
+  &__sub-title {
+    margin-bottom: 30.5px;
+  }
+}

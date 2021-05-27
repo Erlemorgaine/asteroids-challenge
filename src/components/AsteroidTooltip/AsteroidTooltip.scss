@@ -1,0 +1,7 @@
+@import "../styles/utils/variables.scss";
+
+.tooltip {
+  border: 1px solid $white;
+  // todo: rem function
+  padding: 24.29px 33.59px 25.29px 34.59px;
+}

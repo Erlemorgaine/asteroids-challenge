@@ -1,0 +1,25 @@
+@import "../../styles/utils/variables.scss";
+
+.day-button {
+  width: 35px;
+  height: 35px;
+  border-radius: $border-round;
+  text-align: center;
+  color: $white;
+  border: 1px solid $white;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  &.selected,
+  &:hover {
+    background-color: $primary;
+    border: none;
+    color: $black;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
