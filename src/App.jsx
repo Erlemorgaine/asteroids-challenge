@@ -1,22 +1,40 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useState, useCallback } from 'react';
+import moment from 'moment';
 import DayButton from './components/DayButton/DayButton';
-import MagnitudeSelectionBar from './components/MagnitudeSelectionBar/MagnitudeSelectionBar';
+import SideChart from './components/SideChart/SideChart';
 import ScatterPlot from './components/ScatterPlot/ScatterPlot';
+import ScatterPlotLegend from './components/ScatterPlotLegend/ScatterPlotLegend';
+import getAsteroids from './shared/API/getAsteroids';
+import { getWeekStartEndStringForDate, momentToDateString } from './shared/utils/functions';
 
 import './App.scss';
-import ScatterPlotLegend from './components/ScatterPlotLegend/ScatterPlotLegend';
 
 const App = () => {
     // todo: create asteroids in one single svg element, maybe lines just with html, but maybe not a good idea
     // todo: separate file for d3 code?
-    // todo: maybe just craete asteroid svg in advance and manipulate it
 
-  const dayButtonLabels = useRef(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']);
+  const [asteroids, setAsteroids] = useState({});
+  const [selectedAsteroids, setSelectedAsteroids] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(momentToDateString(moment()));
+  const [weekDays, setWeekDays] = useState([]);
 
+  // On mount, gets asteroids for the past week counting from today
+  // Updates asteroids and weekDays with the returned values
   useEffect(() => {
-    // todo: API call
+    getAsteroids(
+      ...getWeekStartEndStringForDate(moment())
+    ).then((asteroidsByDate) => {
+      setAsteroids(asteroidsByDate);
+      setWeekDays(Object.keys(asteroidsByDate).map((d) => moment(d)));
+      setSelectedAsteroids(asteroidsByDate[selectedDay]);
+    });
   }, []);
 
+  // Updates visible asteroids and selected day
+  const selectDay = useCallback((day) => {
+    setSelectedDay(day);
+    setSelectedAsteroids(asteroids[day]);
+  }, [setSelectedDay, setSelectedAsteroids, asteroids]);
 
   // todo: split day stuff to other component
   return (
@@ -30,16 +48,26 @@ const App = () => {
             <div>
               <p>Select one day to update the chart:</p>
               {
-                dayButtonLabels.current.map((day) => <DayButton key={day} day={day} />)
+                weekDays.map((day) => {
+                  const dateString = momentToDateString(day);
+                  return (
+                    <DayButton
+                      key={dateString}
+                      day={day}
+                      selected={selectedDay === dateString}
+                      onClick={selectDay}
+                    />
+                  )
+                })
               }
             </div>
             <ScatterPlotLegend />
           </div>
 
-          <ScatterPlot />
+          <ScatterPlot asteroids={selectedAsteroids} />
         </div>
 
-        <MagnitudeSelectionBar />
+        <SideChart />
       </div>
   )
 }

@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
+import { momentToDateString, momentToDayString } from '../../shared/utils/functions';
 
 import './DayButton.scss';
 
-const DayButton = ({ day, selected }) => (
-    <button className={`day-button ${ selected ? 'selected' : ''}`}>
-        { day }
+const DayButton = ({ day, selected, onClick }) => (
+    <button className={`day-button ${ selected ? 'selected' : ''}`} onClick={() => onClick(momentToDateString(day))}>
+        { momentToDayString(day) }
     </button>
 ) 
 

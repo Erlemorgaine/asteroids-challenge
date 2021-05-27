@@ -6,6 +6,7 @@
   border-radius: $border-round;
   text-align: center;
   color: $white;
+  text-transform: lowercase;
   border: 1px solid $white;
 
   &:not(:last-child) {

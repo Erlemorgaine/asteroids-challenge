@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
-const Asteroid = () => (
-    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Asteroid = ({ scale, x, y }) => (
+    <g transform={`translate(${x}, ${y}) scale(${scale})`}>
         <g filter="url(#filter0_d)">
             <circle cx="49" cy="49" r="44" fill="url(#paint0_radial)" fillOpacity="0.2"/>
             <circle cx="49" cy="49" r="44" stroke="#2AF598"/>
@@ -34,7 +34,7 @@ const Asteroid = () => (
                 <stop offset="1" stopColor="#2AF598"/>
             </radialGradient>
         </defs>
-    </svg>
+    </g>
 )
 
 export default memo(Asteroid);

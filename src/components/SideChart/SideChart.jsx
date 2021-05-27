@@ -1,10 +1,8 @@
 import React, { memo } from 'react';
 
-import './MagnitudeSelectionBar.scss';
+import './SideChart.scss';
 
-
-// todo: rename to SideChart
-const MagnitudeSelectionBar = () => (
+const SideChart = ({ asteroids }) => (
     <div className="side-chart">
         <h2 className="side-chart__title">Brightest of the week</h2>
         <h3 className="side-chart__sub-title">Magnitude (H)</h3>
@@ -16,4 +14,4 @@ const MagnitudeSelectionBar = () => (
     </div>
 ) 
 
-export default memo(MagnitudeSelectionBar);
+export default memo(SideChart);
