@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 
-const Asteroid = ({ scale, x, y }) => (
-    <g transform={`translate(${x}, ${y}) scale(${scale})`}>
+import './Asteroid.scss';
+
+const Asteroid = ({ style, scale, x, y, className }) => (
+    <g className={className} style={style} transform-origin="center" transform={`translate(${x}, ${y}) scale(${scale})`}>
         <g filter="url(#filter0_d)">
             <circle cx="49" cy="49" r="44" fill="url(#paint0_radial)" fillOpacity="0.2"/>
             <circle cx="49" cy="49" r="44" stroke="#2AF598"/>

@@ -1,4 +1,9 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot {
+  background: linear-gradient(bottom to top, $white 0% 2%, transparent 2% 100%);
+
+  svg * {
+    transform-box: fill-box;
+  }
 }

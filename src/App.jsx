@@ -15,8 +15,23 @@ const App = () => {
 
   const [asteroids, setAsteroids] = useState({});
   const [selectedAsteroids, setSelectedAsteroids] = useState([]);
+  const [brightestAsteroids, setBrightestAsteroids] = useState([]);
   const [selectedDay, setSelectedDay] = useState(momentToDateString(moment()));
   const [weekDays, setWeekDays] = useState([]);
+
+  const getBrightestAsteroids = useCallback((asteroidsByDate, amount = 5) =>
+    Object
+      .values(asteroidsByDate)
+      .flat()
+      .sort((prev, next) => prev > next)
+      .slice(0, amount),
+    [])
+
+  // Updates visible asteroids and selected day
+  const selectDay = useCallback((day) => {
+    setSelectedDay(day);
+    setSelectedAsteroids(asteroids[day]);
+  }, [setSelectedDay, setSelectedAsteroids, asteroids]);
 
   // On mount, gets asteroids for the past week counting from today
   // Updates asteroids and weekDays with the returned values
@@ -27,14 +42,9 @@ const App = () => {
       setAsteroids(asteroidsByDate);
       setWeekDays(Object.keys(asteroidsByDate).map((d) => moment(d)));
       setSelectedAsteroids(asteroidsByDate[selectedDay]);
+      setBrightestAsteroids(getBrightestAsteroids(asteroidsByDate));
     });
   }, []);
-
-  // Updates visible asteroids and selected day
-  const selectDay = useCallback((day) => {
-    setSelectedDay(day);
-    setSelectedAsteroids(asteroids[day]);
-  }, [setSelectedDay, setSelectedAsteroids, asteroids]);
 
   // todo: split day stuff to other component
   return (
@@ -67,7 +77,7 @@ const App = () => {
           <ScatterPlot asteroids={selectedAsteroids} />
         </div>
 
-        <SideChart />
+        <SideChart asteroids={brightestAsteroids} />
       </div>
   )
 }

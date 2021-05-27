@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
+import MagnitudeChart from '../MagnitudeChart/MagnitudeChart';
 
 import './MagnitudeItem.scss';
 
 const MagnitudeItem = ({ asteroid }) => (
   // todo: maybe one object with key value pairs for dd dt
-  <div className="magnitude-card">
+  <div className="magnitude-item">
+    <MagnitudeChart />
 
     <dl>
       <dd>Name</dd>

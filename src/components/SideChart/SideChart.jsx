@@ -1,4 +1,7 @@
 import React, { memo } from 'react';
+import MagnitudeItem from './MagnitudeItem/MagnitudeItem';
+import MagnitudeIcon from '../../assets/full-magnitude.svg';
+import BrightnessIcon from '../../assets/full-brightness.svg';
 
 import './SideChart.scss';
 
@@ -8,9 +11,15 @@ const SideChart = ({ asteroids }) => (
         <h3 className="side-chart__sub-title">Magnitude (H)</h3>
 
         <div>
-            <p>Filled area: magnitude</p>
-            <p>Empty area: brightness</p>
+            <p><MagnitudeIcon /> Filled area: magnitude</p>
+            <p><BrightnessIcon />Empty area: brightness</p>
         </div>
+
+      <div>
+        {
+          asteroids.map((asteroid) => <MagnitudeItem key={asteroid.id} asteroid={asteroid} />)
+        }
+      </div>
     </div>
 ) 
 
