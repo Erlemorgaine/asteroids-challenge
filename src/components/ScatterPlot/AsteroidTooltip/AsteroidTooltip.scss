@@ -1,6 +1,7 @@
 @import "../../../styles/utils/variables.scss";
 
 .tooltip {
+  pointer-events: none;
   position: absolute;
   top: var(--tooltip-y);
   left: var(--tooltip-x);
