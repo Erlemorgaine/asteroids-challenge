@@ -1,9 +1,15 @@
 @import "../../styles/utils/variables.scss";
 
 .side-chart {
+  $padding-v: 42px;
+
+  @function padding-h($padding-large) {
+    @return clamp(#{$dashboard-padding-h}, 5vw, #{$padding-large});
+  };
+
   border-left: 1px solid $white;
   min-height: 100vh;
-  padding: 42px 36px 42px 70px;
+  padding: $padding-v padding-h(36px) $padding-v padding-h(70px);
 
   &__title {
     margin-bottom: 41.5px;
@@ -11,5 +17,26 @@
 
   &__sub-title {
     margin-bottom: 30.5px;
+  }
+
+  &__legend {
+    margin-bottom: 58px;
+  }
+
+  @media screen and (max-width: $screen-tablet-portrait) {
+    border: none;
+
+    &__magnitude-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 10px;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   }
 }

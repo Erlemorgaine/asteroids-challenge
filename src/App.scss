@@ -1,30 +1,7 @@
 @import "./styles/utils/variables.scss";
 
-.dashboard {
+.app-layout {
   background: linear-gradient(180deg, $bg-1 0%, $bg-2 75.54%, $bg-3 86.99%);
   min-height: 100vh;
   color: $white;
-  display: flex;
-  // todo; in the end check if still necessary
-  justify-content: space-between;
-
-  &__main-content {
-    width: 100%;
-    padding: 42px 26px;
-
-    &__title {
-      margin-bottom: 39px;
-    }
-
-    &__chart-data {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-
-      // todo: this will go toother component
-      p {
-        margin-bottom: 16px;
-      }
-    }
-  }
 }

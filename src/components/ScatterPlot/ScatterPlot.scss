@@ -1,7 +1,13 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot {
-  background: linear-gradient(bottom to top, $white 0% 2%, transparent 2% 100%);
+  background: repeating-linear-gradient(
+                  to top,
+                  $transparent-white,
+                  $transparent-white 1px,
+                  transparent 1px,
+                  transparent calc(25%)
+  );
 
   svg * {
     transform-box: fill-box;

@@ -4,7 +4,14 @@ $bg-1: #0a1d19;
 $bg-2: #184159;
 $bg-3: #19435d;
 $white: #fff;
+$transparent-white: rgba(255, 255, 255, 0.5);
 $black: #000;
 
 // Borders
 $border-round: 50%;
+
+// Screen sizes
+$screen-tablet-portrait: 768px;
+
+// Sizes
+$dashboard-padding-h: 26px;

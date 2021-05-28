@@ -1,6 +1,8 @@
 import React, { memo, useCallback, useRef, useEffect, useState } from 'react';
-import * as d3 from 'd3';
 import Asteroid from './Asteroid/Asteroid';
+import { getMinMax, scaleLinear } from '../../shared/utils/functions';
+import ArrowRight from '../../assets/arrow-right.svg';
+import ArrowUp from '../../assets/arrow-up.svg';
 
 import './ScatterPlot.scss';
 
@@ -12,20 +14,20 @@ const ScatterPlot = ({ asteroids }) => {
   const [incomingAsteroids, setIncomingAsteroids] = useState([]);
   const [leaving, setLeaving] = useState(false);
 
-  const diameterScale = useCallback((astr) => d3.scaleLinear()
-    .domain(d3.extent(astr, a => a.diameter))
-    .range([0.1, 1]),
-  []);
+  const diameterScale = useCallback((astr) => scaleLinear(
+    getMinMax(astr, a => a.diameter),
+    [0.1, 1]
+  ), []);
 
-  const velocityScale = useCallback((astr) => d3.scaleLinear()
-    .domain(d3.extent(astr, a => a.velocity))
-    .range([0, width.current - 100]),
-  [width]);
+  const velocityScale = useCallback((astr) => scaleLinear(
+    getMinMax(astr, a => a.velocity),
+    [0, width.current - 100]
+  ), [width]);
 
-  const distanceScale = useCallback((astr) => d3.scaleLinear()
-    .domain(d3.extent(astr, a => a.distance))
-    .range([0, height.current - 100]),
-  [height]);
+  const distanceScale = useCallback((astr) => scaleLinear(
+    getMinMax(astr, a => a.distance),
+    [0, height.current - 100]
+  ), [height]);
 
   // todo: comment
   useEffect(() => {
@@ -49,8 +51,8 @@ const ScatterPlot = ({ asteroids }) => {
     }
   }, [asteroids]);
 
-  return (
-    <div className="scatter-plot">
+  return <>{
+    asteroids.length > 0 && (<div className="scatter-plot">
       <svg viewBox={`0 0 ${width.current} ${height.current}`} fill="none" xmlns="http://www.w3.org/2000/svg">
         { leaving && leavingAsteroids.map(({ id, diameter, velocity, distance }) => <Asteroid
           key={id}
@@ -72,10 +74,11 @@ const ScatterPlot = ({ asteroids }) => {
       </svg>
 
       <div className="scatter-plot__axes">
-
+        <div><ArrowUp /> Distance <span>(au)</span></div>
+        <div><ArrowRight /> Velocity <span>(km/s)</span></div>
       </div>
-    </div>
-  )
+    </div>)
+  }</>
 }
 
 // todo: proptypes

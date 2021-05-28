@@ -8,6 +8,7 @@
   color: $white;
   text-transform: lowercase;
   border: 1px solid $white;
+  animation: fadeIn 0.3s;
 
   &:not(:last-child) {
     margin-right: 5px;

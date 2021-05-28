@@ -1,10 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+module.exports = (_, { mode }) => ({
  output: {
    path: path.join(__dirname, '/dist'),
-   filename: 'index.bundle.js'
+   filename: '[name].[chunkhash].js',
  },
  devServer: {
    port: 3000,
@@ -21,7 +22,9 @@ module.exports = {
      },
      {
        test: /\.(css|scss)$/,
-       use: ['style-loader', 'css-loader', 'sass-loader']
+       use: [ mode === 'production'
+         ? MiniCssExtractPlugin.loader
+         : 'style-loader', 'css-loader', 'sass-loader']
      },
      {
       test: /\.svg$/,
@@ -32,5 +35,8 @@ module.exports = {
  resolve: {
     extensions: ["*", ".js", ".jsx"],
   },
- plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
-}
+ plugins: [
+   new HtmlWebpackPlugin({ template: './src/index.html' }),
+   new MiniCssExtractPlugin()
+ ]
+})

@@ -1,0 +1,31 @@
+@import "../../styles/utils/variables.scss";
+
+.dashboard {
+  display: flex;
+  // todo; in the end check if still necessary
+  justify-content: space-between;
+
+  &__main-content {
+    width: 100%;
+    padding: 42px $dashboard-padding-h;
+
+    &__title {
+      margin-bottom: 39px;
+    }
+
+    &__chart-data {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      // todo: this will go toother component
+      p {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-tablet-portrait) {
+    flex-direction: column;
+  }
+}

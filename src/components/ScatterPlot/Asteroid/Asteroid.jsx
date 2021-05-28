@@ -5,7 +5,7 @@ import './Asteroid.scss';
 const Asteroid = ({ style, scale, x, y, className }) => (
     <g className={className} style={style} transform-origin="center" transform={`translate(${x}, ${y}) scale(${scale})`}>
         <g filter="url(#filter0_d)">
-            <circle cx="49" cy="49" r="44" fill="url(#paint0_radial)" fillOpacity="0.2"/>
+            <circle cx="49" cy="49" r="44" fill="url(#asteroid_radial)" fillOpacity="0.2"/>
             <circle cx="49" cy="49" r="44" stroke="#2AF598"/>
         </g>
         <g filter="url(#filter1_d)">
@@ -31,7 +31,7 @@ const Asteroid = ({ style, scale, x, y, className }) => (
                 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
             </filter>
-            <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(49 49) rotate(90) scale(44)">
+            <radialGradient id="asteroid_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(49 49) rotate(90) scale(44)">
                 <stop stopColor="#2AF598" stopOpacity="0"/>
                 <stop offset="1" stopColor="#2AF598"/>
             </radialGradient>

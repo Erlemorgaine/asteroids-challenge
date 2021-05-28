@@ -3,20 +3,19 @@ import MagnitudeChart from '../MagnitudeChart/MagnitudeChart';
 
 import './MagnitudeItem.scss';
 
-const MagnitudeItem = ({ asteroid }) => (
-  // todo: maybe one object with key value pairs for dd dt
-  <div className="magnitude-item">
-    <MagnitudeChart />
+const MagnitudeItem = ({ className, asteroid }) => (
+  <div className={`magnitude-item ${className}`}>
+    <MagnitudeChart scale={asteroid.scale} />
 
     <dl>
-      <dd>Name</dd>
-      <dt>{ asteroid.name }</dt>
+      <dt>Name: </dt>
+      <dd>{ asteroid.name }</dd>
 
-      <dd>Diameter</dd>
-      <dt>{ asteroid.diameter }</dt>
+      <dt>Diameter: </dt>
+      <dd>{ asteroid.diameter }</dd>
 
-      <dd>Magnitude</dd>
-      <dt>{ asteroid.magnitude }</dt>
+      <dt>Magnitude: </dt>
+      <dd>{ asteroid.magnitude }</dd>
     </dl>
   </div>
 )

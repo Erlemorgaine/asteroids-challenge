@@ -2,4 +2,10 @@
 
 .magnitude-item {
   display: flex;
+  margin-bottom: 40px;
+  // todo: margin right until end of page: 96.46 px
+
+  svg {
+    margin-right: 23.46px;
+  }
 }
