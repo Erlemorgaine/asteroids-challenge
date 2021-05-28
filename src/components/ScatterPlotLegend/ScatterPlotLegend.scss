@@ -1,5 +1,19 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot-legend {
- 
+  &__title {
+
+  }
+
+  &__min {
+    svg {
+      transform: scale(var(--scale-min));
+    }
+  }
+
+  &__max {
+    svg {
+      transform: scale(var(--scale-max));
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import { AsteroidPropTypes } from '../../../shared/utils/proptypes';
+import PropTypes from 'prop-types';
+import { AsteroidShape } from '../../../shared/utils/proptypes';
 import MagnitudeChart from '../MagnitudeChart/MagnitudeChart';
 
 import './MagnitudeItem.scss';
@@ -22,7 +23,10 @@ const MagnitudeItem = ({ className, asteroid }) => (
 )
 
 MagnitudeItem.propTypes = {
-  asteroid: AsteroidPropTypes.isRequired,
+  asteroid: PropTypes.shape(
+    {...AsteroidShape, scale: PropTypes.number.isRequired}
+  ).isRequired,
+  className: PropTypes.string,
 }
 
 export default memo(MagnitudeItem);

@@ -1,12 +1,12 @@
 import React, { memo, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { AsteroidPropTypes } from '../../shared/utils/proptypes';
 import MagnitudeItem from './MagnitudeItem/MagnitudeItem';
 import MagnitudeIcon from '../../assets/full-magnitude.svg';
 import BrightnessIcon from '../../assets/full-brightness.svg';
 import { getMinMax, scaleLinear } from '../../shared/utils/functions';
 
 import './SideChart.scss';
-import PropTypes from 'prop-types';
-import { AsteroidPropTypes } from '../../shared/utils/proptypes';
 
 const SideChart = ({ asteroids }) => {
   const [scaledAsteroids, setScaledAsteroids] = useState([]);

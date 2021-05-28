@@ -15,6 +15,13 @@ const Dashboard = () => {
   const [brightestAsteroids, setBrightestAsteroids] = useState([]);
   const [selectedDay, setSelectedDay] = useState(momentToDateString(moment()));
   const [weekDays, setWeekDays] = useState([]);
+  const [plotRef, setPlotRef] = useState(null);
+
+  console.log(plotRef)
+
+  // todo: adjust view height to viewport with useRef
+  const plotWidth = 750;
+  const plotHeight = 375;
 
   const getBrightestAsteroids = useCallback((asteroidsByDate, amount = 5) =>
     Object
@@ -69,10 +76,15 @@ const Dashboard = () => {
                 })
               }
             </div>
-            <ScatterPlotLegend scaleMin={1} scaleMax={1} />
+            <ScatterPlotLegend scaleMin={0.1} scaleMax={1} />
           </div>
 
-          <ScatterPlot asteroids={selectedAsteroids} />
+          <ScatterPlot
+            asteroids={selectedAsteroids}
+            width={plotWidth}
+            height={plotHeight}
+            getPlotRef={setPlotRef}
+          />
         </div>
 
         <SideChart asteroids={brightestAsteroids} />

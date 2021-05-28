@@ -1,6 +1,7 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot {
+  position: relative;
   background: repeating-linear-gradient(
                   to top,
                   $transparent-white,
