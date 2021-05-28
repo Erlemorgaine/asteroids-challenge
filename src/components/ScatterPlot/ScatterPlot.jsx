@@ -1,8 +1,10 @@
 import React, { memo, useCallback, useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Asteroid from './Asteroid/Asteroid';
 import { getMinMax, scaleLinear } from '../../shared/utils/functions';
 import ArrowRight from '../../assets/arrow-right.svg';
 import ArrowUp from '../../assets/arrow-up.svg';
+import { AsteroidPropTypes } from '../../shared/utils/proptypes';
 
 import './ScatterPlot.scss';
 
@@ -81,6 +83,8 @@ const ScatterPlot = ({ asteroids }) => {
   }</>
 }
 
-// todo: proptypes
+ScatterPlot.propTypes = {
+  asteroids: PropTypes.arrayOf(AsteroidPropTypes).isRequired,
+}
 
 export default memo(ScatterPlot);

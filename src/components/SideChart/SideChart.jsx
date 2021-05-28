@@ -5,6 +5,8 @@ import BrightnessIcon from '../../assets/full-brightness.svg';
 import { getMinMax, scaleLinear } from '../../shared/utils/functions';
 
 import './SideChart.scss';
+import PropTypes from 'prop-types';
+import { AsteroidPropTypes } from '../../shared/utils/proptypes';
 
 const SideChart = ({ asteroids }) => {
   const [scaledAsteroids, setScaledAsteroids] = useState([]);
@@ -44,6 +46,10 @@ const SideChart = ({ asteroids }) => {
       </div>
     </div>
   )
+}
+
+SideChart.propTypes = {
+  asteroids: PropTypes.arrayOf(AsteroidPropTypes).isRequired,
 }
 
 export default memo(SideChart);

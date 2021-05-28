@@ -10,9 +10,6 @@ import { getWeekStartEndStringForDate, momentToDateString } from '../../shared/u
 import './Dashboard.scss';
 
 const Dashboard = () => {
-    // todo: create asteroids in one single svg element, maybe lines just with html, but maybe not a good idea
-    // todo: separate file for d3 code?
-
   const [asteroids, setAsteroids] = useState({});
   const [selectedAsteroids, setSelectedAsteroids] = useState([]);
   const [brightestAsteroids, setBrightestAsteroids] = useState([]);
@@ -72,7 +69,7 @@ const Dashboard = () => {
                 })
               }
             </div>
-            <ScatterPlotLegend />
+            <ScatterPlotLegend scaleMin={1} scaleMax={1} />
           </div>
 
           <ScatterPlot asteroids={selectedAsteroids} />

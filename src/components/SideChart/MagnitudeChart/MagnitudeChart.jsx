@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import "./MagnitudeChart.scss";
 
@@ -16,5 +17,9 @@ const MagnitudeChart = ({scale}) => (
     </defs>
   </svg>
 )
+
+MagnitudeChart.propTypes = {
+  scale: PropTypes.number.isRequired,
+}
 
 export default memo(MagnitudeChart);

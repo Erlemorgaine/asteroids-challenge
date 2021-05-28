@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { AsteroidPropTypes } from '../../../shared/utils/proptypes';
 import MagnitudeChart from '../MagnitudeChart/MagnitudeChart';
 
 import './MagnitudeItem.scss';
@@ -19,5 +20,9 @@ const MagnitudeItem = ({ className, asteroid }) => (
     </dl>
   </div>
 )
+
+MagnitudeItem.propTypes = {
+  asteroid: AsteroidPropTypes.isRequired,
+}
 
 export default memo(MagnitudeItem);
