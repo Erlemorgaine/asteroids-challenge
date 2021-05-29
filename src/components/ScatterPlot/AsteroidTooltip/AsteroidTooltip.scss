@@ -1,6 +1,7 @@
 @import "../../../styles/utils/variables.scss";
 
 .tooltip {
+  background-color: $layover;
   pointer-events: none;
   position: absolute;
   top: var(--tooltip-y);
