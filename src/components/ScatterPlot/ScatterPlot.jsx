@@ -86,8 +86,7 @@ const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
 
   useEffect(() => getPlotRef(plotContainer.current?.clientWidth), [plotContainer.current?.clientWidth]);
 
-  return <>{
-    asteroids.length > 0 && (
+  return (
       <div className="scatter-plot" ref={plotContainer}>
         { tooltipData && <AsteroidTooltip asteroid={tooltipData} /> }
         <svg
@@ -128,7 +127,6 @@ const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
         </div>
       </div>
     )
-  }</>
 }
 
 ScatterPlot.propTypes = {

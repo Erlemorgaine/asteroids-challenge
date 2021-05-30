@@ -10,13 +10,13 @@ const MagnitudeItem = ({ className, asteroid }) => (
     <MagnitudeChart scale={asteroid.scale} id={asteroid.id} />
 
     <dl>
-      <dt>Name: </dt>
+      <dt>Name:</dt>
       <dd>{ asteroid.name }</dd>
 
-      <dt>Diameter: </dt>
+      <dt>Diameter:</dt>
       <dd>{ asteroid.diameter }</dd>
 
-      <dt>Magnitude: </dt>
+      <dt>Magnitude:</dt>
       <dd>{ asteroid.magnitude }</dd>
     </dl>
   </div>

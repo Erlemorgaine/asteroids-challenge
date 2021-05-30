@@ -2,9 +2,11 @@
 
 .scatter-plot-legend {
   display: flex;
+  font-size: $text-small;
 
   &__title {
-
+    font-size: $text-base;
+    text-transform: uppercase;
   }
 
   &__min {

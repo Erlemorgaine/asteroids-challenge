@@ -11,12 +11,15 @@
 
     &__title {
       margin-bottom: 39px;
+      font-size: $text-large;
+      text-decoration: underline;
     }
 
     &__chart-data {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      animation: fadeIn 0.3s;
 
       // todo: this will go to other component
       p {

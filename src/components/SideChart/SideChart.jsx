@@ -25,26 +25,29 @@ const SideChart = ({ asteroids }) => {
     setScaledAsteroids(asteroidsWithScale);
   }, [asteroids]);
 
-  return (
-    <div className="side-chart">
-      <h2 className="side-chart__title">Brightest of the week</h2>
-      <h3 className="side-chart__sub-title">Magnitude (H)</h3>
+  return (<>
+    {
+      scaledAsteroids.length > 0 && <div className="side-chart">
+        <h2 className="side-chart__title">Brightest of the week</h2>
+        <h3 className="side-chart__sub-title">Magnitude (H)</h3>
 
-      <div className="side-chart__legend">
-        <p><MagnitudeIcon /> Filled area: magnitude</p>
-        <p><BrightnessIcon />Empty area: brightness</p>
-      </div>
+        <div className="side-chart__legend">
+          <p><MagnitudeIcon /> Filled area: magnitude</p>
+          <p><BrightnessIcon />Empty area: brightness</p>
+        </div>
 
-      <div className="side-chart__magnitude-items">
-        {
-          scaledAsteroids.map((asteroid) => <MagnitudeItem
-            className="side-chart__magnitude-items__item"
-            key={asteroid.id}
-            asteroid={asteroid}
-          />)
-        }
+        <div className="side-chart__magnitude-items">
+          {
+            scaledAsteroids.map((asteroid) => <MagnitudeItem
+              className="side-chart__magnitude-items__item"
+              key={asteroid.id}
+              asteroid={asteroid}
+            />)
+          }
+        </div>
       </div>
-    </div>
+    }
+  </>
   )
 }
 

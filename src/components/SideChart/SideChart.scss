@@ -2,6 +2,7 @@
 
 .side-chart {
   $padding-v: 42px;
+  animation: fadeIn 0.3s;
 
   @function padding-h($padding-large) {
     @return clamp(#{$dashboard-padding-h}, 5vw, #{$padding-large});
@@ -13,14 +14,27 @@
 
   &__title {
     margin-bottom: 41.5px;
+    text-decoration: underline;
+    font-size: $text-large;
   }
 
   &__sub-title {
     margin-bottom: 30.5px;
+    font-size: $text-base;
+    text-transform: uppercase;
   }
 
   &__legend {
     margin-bottom: 58px;
+    font-size: $text-small;
+
+    > p:first-child {
+      margin-bottom: 4px;
+    }
+
+    svg {
+      margin-right: 10.86px;
+    }
   }
 
   @media screen and (max-width: $screen-tablet-portrait) {

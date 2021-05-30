@@ -1,3 +1,5 @@
+@import "../utils/variables";
+
 @font-face {
     font-family: 'Avenir';
     src: url('/src/assets/fonts/Avenir-Roman.woff') format('woff');
@@ -21,5 +23,5 @@
 
 body {
     font-family: 'Avenir', sans-serif;
-    font-size: 13px;
+    font-size: $text-base;
 }

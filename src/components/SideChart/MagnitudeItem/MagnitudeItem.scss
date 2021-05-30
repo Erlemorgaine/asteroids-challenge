@@ -5,19 +5,6 @@
   margin-bottom: 40px;
   // todo: margin right until end of page: 96.46 px
 
-  dl {
-    display: grid;
-    grid-template-columns: max-content auto;
-
-    dt {
-      grid-column-start: 1;
-    }
-
-    dd {
-      grid-column-start: 2;
-    }
-  }
-
   svg {
     margin-right: 23.46px;
   }

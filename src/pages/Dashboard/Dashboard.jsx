@@ -58,33 +58,35 @@ const Dashboard = () => {
           <h1 className="dashboard__main-content__title">
               Asteroids of the day
           </h1>
-          
-          <div className="dashboard__main-content__chart-data">
-            <div>
-              <p>Select one day to update the chart:</p>
-              {
-                weekDays.map((day) => {
-                  const dateString = momentToDateString(day);
-                  return (
-                    <DayButton
-                      key={dateString}
-                      day={day}
-                      selected={selectedDay === dateString}
-                      onClick={selectDay}
-                    />
-                  )
-                })
-              }
-            </div>
-            <ScatterPlotLegend scaleMin={0.1} scaleMax={1} />
-          </div>
 
-          <ScatterPlot
-            asteroids={selectedAsteroids}
-            width={plotWidth}
-            height={plotHeight}
-            getPlotRef={setPlotRef}
-          />
+          { selectedAsteroids.length > 0 && <>
+            <div className="dashboard__main-content__chart-data">
+              <div>
+                <p>Select one day to update the chart:</p>
+                {
+                  weekDays.map((day) => {
+                    const dateString = momentToDateString(day);
+                    return (
+                      <DayButton
+                        key={dateString}
+                        day={day}
+                        selected={selectedDay === dateString}
+                        onClick={selectDay}
+                      />
+                    )
+                  })
+                }
+              </div>
+              <ScatterPlotLegend scaleMin={0.1} scaleMax={1} />
+            </div>
+
+            <ScatterPlot
+              asteroids={selectedAsteroids}
+              width={plotWidth}
+              height={plotHeight}
+              getPlotRef={setPlotRef}
+            />
+          </> }
         </div>
 
         <SideChart asteroids={brightestAsteroids} />

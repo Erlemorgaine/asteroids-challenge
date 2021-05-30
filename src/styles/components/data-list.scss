@@ -1,0 +1,15 @@
+dl {
+  dt {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  dd {
+    display: inline;
+  }
+
+  dd:after {
+    content: '';
+    display: block;
+  }
+}
