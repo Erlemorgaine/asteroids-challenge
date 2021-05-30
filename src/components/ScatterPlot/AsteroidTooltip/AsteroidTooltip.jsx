@@ -6,7 +6,6 @@ import './AsteroidTooltip.scss';
 
 const AsteroidTooltip = ({ asteroid }) => {
   return (
-    // todo: this should be svg
     <div className="tooltip" style={{'--tooltip-x': `${asteroid.tooltipX}px`, '--tooltip-y': `${asteroid.tooltipY}px`}}>
       <dl>
         <dt>Name</dt>

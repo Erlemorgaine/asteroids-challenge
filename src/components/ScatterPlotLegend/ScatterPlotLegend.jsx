@@ -6,11 +6,19 @@ import './ScatterPlotLegend.scss';
 
 const ScatterPlotLegend = ({ scaleMin, scaleMax }) => (
     <div className="scatter-plot-legend" style={{'--scale-min': scaleMin, '--scale-max': scaleMax}}>
+      <div>
         <h3 className="scatter-plot-legend__title">
-            Diameter
+          Diameter
         </h3>
-        <div className="scatter-plot-legend__min"><AsteroidSvg /> <span>Min km</span></div>
-        <div className="scatter-plot-legend__max"><AsteroidSvg /> <span>Max km</span></div>
+        <div className="scatter-plot-legend__min">
+          <AsteroidSvg id="min_km" label="icon showing the size of the smallest asteroid in the graph" />
+          <span>Min km</span>
+        </div>
+      </div>
+      <div className="scatter-plot-legend__max">
+        <AsteroidSvg id="max_km" label="icon showing the size of the largest asteroid in the graph" />
+        <span>Max km</span>
+      </div>
     </div>
 )
 

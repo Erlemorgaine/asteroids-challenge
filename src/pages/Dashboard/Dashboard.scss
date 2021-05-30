@@ -18,7 +18,7 @@
       display: flex;
       justify-content: space-between;
 
-      // todo: this will go toother component
+      // todo: this will go to other component
       p {
         margin-bottom: 16px;
       }
@@ -27,5 +27,9 @@
 
   @media screen and (max-width: $screen-tablet-portrait) {
     flex-direction: column;
+
+    &__main-content__chart-data {
+      flex-direction: column;
+    }
   }
 }

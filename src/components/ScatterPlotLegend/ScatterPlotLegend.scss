@@ -1,6 +1,8 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot-legend {
+  display: flex;
+
   &__title {
 
   }

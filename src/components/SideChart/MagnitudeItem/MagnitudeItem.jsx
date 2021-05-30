@@ -7,7 +7,7 @@ import './MagnitudeItem.scss';
 
 const MagnitudeItem = ({ className, asteroid }) => (
   <div className={`magnitude-item ${className}`}>
-    <MagnitudeChart scale={asteroid.scale} />
+    <MagnitudeChart scale={asteroid.scale} id={asteroid.id} />
 
     <dl>
       <dt>Name: </dt>

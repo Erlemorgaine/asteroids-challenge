@@ -13,4 +13,24 @@
   svg * {
     transform-box: fill-box;
   }
+
+  &__axes {
+    position: absolute;
+    bottom: -27.9px;
+    text-transform: uppercase;
+
+    > div {
+      &:first-child {
+        margin-bottom: 19.8px;
+      }
+
+      svg {
+        margin-right: 12px;
+      }
+
+      span {
+        text-transform: lowercase;
+      }
+    }
+  }
 }

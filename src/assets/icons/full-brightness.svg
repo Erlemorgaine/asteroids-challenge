@@ -1,4 +1,5 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg aria-labelledby="full_brightness" role="presentation" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <title id="full_brightness" lang="en">Icon showing what an empty area area representing full brightness looks like</title>
 <rect x="8.07104" y="0.928925" width="10" height="10" transform="rotate(45 8.07104 0.928925)" fill="url(#paint0_radial)" stroke="white"/>
 <defs>
 <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13.071 5.92892) rotate(90) scale(5)">

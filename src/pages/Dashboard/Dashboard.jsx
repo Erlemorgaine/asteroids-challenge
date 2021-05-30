@@ -45,7 +45,7 @@ const Dashboard = () => {
       ...getWeekStartEndStringForDate(moment())
     ).then((asteroidsByDate) => {
       setAsteroids(asteroidsByDate);
-      setWeekDays(Object.keys(asteroidsByDate).map((d) => moment(d)));
+      setWeekDays(Object.keys(asteroidsByDate).sort().map((d) => moment(d)));
       setSelectedAsteroids(asteroidsByDate[selectedDay]);
       setBrightestAsteroids(getBrightestAsteroids(asteroidsByDate));
     });

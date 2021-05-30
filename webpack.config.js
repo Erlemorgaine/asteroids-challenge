@@ -29,7 +29,19 @@ module.exports = (_, { mode }) => ({
      {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
-    }
+    },
+     {
+       test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+       use: [
+         {
+           loader: 'file-loader',
+           options: {
+             name: '[name].[ext]',
+             outputPath: 'fonts/'
+           }
+         }
+       ]
+     }
    ]
  },
  resolve: {
