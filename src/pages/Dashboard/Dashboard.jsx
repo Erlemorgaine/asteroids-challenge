@@ -19,9 +19,12 @@ const Dashboard = () => {
 
   console.log(plotRef)
 
-  // todo: adjust view height to viewport with useRef
-  const plotWidth = 750;
-  const plotHeight = 375;
+  // Define the viewbox width and -height of the scatterplot, and the screen size for which the plot's dimensions in actual
+  // pixel values correspond to the viewbox values.
+  const plotViewboxWidth = 750;
+  const plotViewboxHeight = 375;
+  const baseScreenWidth = 1072;
+  const asteroidRadius = 49;
 
   const getBrightestAsteroids = useCallback((asteroidsByDate, amount = 5) =>
     Object
@@ -77,14 +80,16 @@ const Dashboard = () => {
                   })
                 }
               </div>
-              <ScatterPlotLegend scaleMin={0.1} scaleMax={1} />
+              <ScatterPlotLegend scaleMin={0.1} scaleMax={1} radius={asteroidRadius} />
             </div>
 
             <ScatterPlot
               asteroids={selectedAsteroids}
-              width={plotWidth}
-              height={plotHeight}
+              width={plotViewboxWidth}
+              height={plotViewboxHeight}
+              baseWidth={baseScreenWidth}
               getPlotRef={setPlotRef}
+              asteroidRadius={asteroidRadius}
             />
           </> }
         </div>

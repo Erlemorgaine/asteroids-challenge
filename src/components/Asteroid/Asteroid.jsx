@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 
 import './Asteroid.scss';
 
-const Asteroid = ({ id, scale, x, y, withGradient, onHover, className }) => (
+const Asteroid = ({ id, scale, x, y, radius, withGradient, onHover, className }) => (
   <g
     className={className}
-    transform-origin="center"
     transform={`translate(${x}, ${y}) scale(${scale})`}
   >
     <g filter="url(#filter0_d)">
@@ -17,13 +16,13 @@ const Asteroid = ({ id, scale, x, y, withGradient, onHover, className }) => (
         fill={withGradient ? 'url(#asteroid_radial)' : 'transparent'}
         fillOpacity="0.2"
         onMouseEnter={() => onHover(id)}
-        onMouseOutCapture={() => onHover(null)}
+        onMouseOut={() => onHover(null)}
       />
-      <circle cx="49" cy="49" r="44" stroke="#2AF598" />
+      <circle cx="49" cy="49" r="44" stroke="#2AF598" vectorEffect="non-scaling-stroke" />
     </g>
     <g filter="url(#filter1_d)">
-      <circle cx="49" cy="49" r="1" fill="#2AF598" />
-      <circle cx="49" cy="49" r="1" stroke="#2AF598"/>
+      <circle cx={`${radius}`} cy={`${radius}`} r="1" fill="#2AF598" />
+      <circle cx={`${radius}`} cy={`${radius}`} r="1" stroke="#2AF598"/>
     </g>
     <defs>
         <filter id="filter0_d" x="0.5" y="0.5" width="97" height="97" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -47,7 +46,7 @@ const Asteroid = ({ id, scale, x, y, withGradient, onHover, className }) => (
       {
         withGradient &&
         <radialGradient id="asteroid_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                        gradientTransform="translate(49 49) rotate(90) scale(44)">
+                        gradientTransform={`translate(${radius} ${radius}) rotate(90) scale(44)`}>
           <stop stopColor="#2AF598" stopOpacity="0"/>
           <stop offset="1" stopColor="#2AF598"/>
         </radialGradient>
@@ -61,6 +60,7 @@ Asteroid.propTypes = {
   scale: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
+  radius: PropTypes.number.isRequired,
   withGradient: PropTypes.bool,
   onHover: PropTypes.func,
   className: PropTypes.string,

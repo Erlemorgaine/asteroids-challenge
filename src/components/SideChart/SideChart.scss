@@ -1,8 +1,12 @@
 @import "../../styles/utils/variables.scss";
 
 .side-chart {
+  width: 30%;
   $padding-v: 42px;
-  animation: fadeIn 0.3s;
+
+  > * {
+    animation: fadeIn 0.3s;
+  }
 
   @function padding-h($padding-large) {
     @return clamp(#{$dashboard-padding-h}, 5vw, #{$padding-large});
@@ -39,6 +43,7 @@
 
   @media screen and (max-width: $screen-tablet-portrait) {
     border: none;
+    width: 100%;
 
     &__magnitude-items {
       display: flex;

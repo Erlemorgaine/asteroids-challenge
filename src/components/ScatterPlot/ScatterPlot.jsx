@@ -9,7 +9,7 @@ import AsteroidTooltip from './AsteroidTooltip/AsteroidTooltip';
 
 import './ScatterPlot.scss';
 
-const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
+const ScatterPlot = ({ asteroids, width, height, baseWidth, asteroidRadius, getPlotRef }) => {
   const plotContainer = useRef(null);
 
   const [leavingAsteroids, setLeavingAsteroids] = useState([]);
@@ -33,34 +33,30 @@ const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
   ), [height]);
 
   const asteroidXScale = useMemo(() => scaleLinear(
-      [0, width],
-    [0, plotContainer.current?.clientWidth],
-    ), [plotContainer.current, width]);
+      [0, width - 100],
+    [0, plotContainer.current?.clientWidth - ((window.innerWidth / baseWidth) * 100)],
+    ), [plotContainer.current, width, baseWidth]);
 
   const asteroidYScale = useMemo(() => scaleLinear(
-    [0, height],
-    [0, plotContainer.current?.clientHeight],
-  ), [plotContainer.current, height]);
+      [0, height - 100],
+      [0, plotContainer.current?.clientHeight - ((window.innerWidth / baseWidth) * 100)],
+    ), [plotContainer.current, height, baseWidth]);
 
   // todo: comment
   const onAsteroidHover = useCallback((id) => {
     if (id) {
       const hoveredAsteroid = incomingAsteroids.find((a) => a.id === id);
-
-      console.log('x', hoveredAsteroid.x)
-      console.log('y', hoveredAsteroid.y)
-      console.log('tooltipX', asteroidXScale(hoveredAsteroid.x))
-      console.log('tooltipY', asteroidXScale(hoveredAsteroid.y))
+      const offsetToCenter = (window.innerWidth / baseWidth) * asteroidRadius * hoveredAsteroid.scale;
 
       setTooltipData({
         ...hoveredAsteroid,
-        tooltipX: asteroidXScale(hoveredAsteroid.x),
-        tooltipY: asteroidYScale(hoveredAsteroid.y)
+        tooltipX: asteroidXScale(hoveredAsteroid.x) + offsetToCenter,
+        tooltipY: asteroidYScale(hoveredAsteroid.y) + offsetToCenter
       })
     } else {
       setTooltipData(null);
     }
-  }, [asteroids, setTooltipData, incomingAsteroids, asteroidXScale, asteroidYScale])
+  }, [asteroids, setTooltipData, incomingAsteroids, asteroidXScale, asteroidYScale, baseWidth])
 
   // todo: comment
   useEffect(() => {
@@ -106,6 +102,7 @@ const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
             scale={scale}
             x={x}
             y={y}
+            radius={asteroidRadius}
           />)
           }
           {
@@ -116,6 +113,7 @@ const ScatterPlot = ({ asteroids, width, height, getPlotRef }) => {
               scale={scale}
               x={x}
               y={y}
+              radius={asteroidRadius}
               onHover={onAsteroidHover}
             />)
           }
@@ -133,6 +131,8 @@ ScatterPlot.propTypes = {
   asteroids: PropTypes.arrayOf(AsteroidPropTypes).isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  baseWidth: PropTypes.number.isRequired,
+  asteroidRadius: PropTypes.number.isRequired,
   getPlotRef: PropTypes.func,
 }
 
