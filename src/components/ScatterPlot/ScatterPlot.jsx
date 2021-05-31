@@ -17,6 +17,9 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
   const [tooltipData, setTooltipData] = useState(null);
   const [leaving, setLeaving] = useState(false);
 
+  // Here follows a set of helper scale functions that take a data point of the asteroid object, and
+  // map it to the relevant transform value to be used on the asteroid SVG
+
   const diameterScale = useCallback((astr) => scaleLinear(
     getMinMax(astr, a => a.diameter),
     [0.1, 1]
@@ -42,7 +45,8 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
       [0, plotContainer.current?.clientHeight - (plotWindowRatio * 100)],
     ), [plotContainer.current, height, plotWindowRatio]);
 
-  // todo: comment
+  // Takes care of showing a tooltip when hovering over an asteroid.
+  // Uses the x and y values of the asteroid in the svg to determine the position of the html tooltip
   const onAsteroidHover = useCallback((id) => {
     if (id) {
       const hoveredAsteroid = incomingAsteroids.find((a) => a.id === id);
@@ -58,7 +62,8 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
     }
   }, [asteroids, setTooltipData, incomingAsteroids, asteroidXScale, asteroidYScale, plotWindowRatio])
 
-  // todo: comment
+  // Takes care of animating incoming and outgoing asteroids, by temporarily showing two sets of asteroids.
+  // Also adds the correct position values for the asteroid SVGs on the asteroid object.
   useEffect(() => {
     const scaledAsteroids = asteroids.map((a) => ({
       ...a,

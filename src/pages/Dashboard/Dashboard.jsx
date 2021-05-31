@@ -6,15 +6,16 @@ import ScatterPlot from '../../components/ScatterPlot/ScatterPlot';
 import ScatterPlotLegend from '../../components/ScatterPlotLegend/ScatterPlotLegend';
 import getAsteroids from '../../shared/API/getAsteroids';
 import { getWeekStartEndStringForDate, momentToDateString } from '../../shared/utils/functions';
+import ScatterPlotDaySelection from '../../components/ScatterPlotDaySelection/ScatterPlotDaySelection';
 
 import './Dashboard.scss';
 
 const Dashboard = () => {
-  // Define the viewbox width and -height of the scatterplot, and the screen size for which the plot's dimensions in actual
+  // Define the viewbox width and -height of the scatterplot, and the base screen size for which the plot's dimensions in actual
   // pixel values correspond to the viewbox values.
   const plotViewboxWidth = 750;
   const plotViewboxHeight = 375;
-  const baseScreenWidth = 1000;
+  const baseScreenWidth = 1062;
   const asteroidRadius = 44;
 
   const [asteroids, setAsteroids] = useState({});
@@ -39,6 +40,8 @@ const Dashboard = () => {
     setSelectedAsteroids(asteroids[day]);
   }, [setSelectedDay, setSelectedAsteroids, asteroids]);
 
+  // Sets a ratio between the size in pixels of the scatter plot, and the width of the scatter plot viewbox.
+  // Takes the base width (width of screen in which viewbox values match actual pixel values) to determine this ratio.
   useEffect(() => window.addEventListener('resize', () => {
     setPlotWindowRatio(window.innerWidth / baseScreenWidth);
   }), [])
@@ -56,7 +59,6 @@ const Dashboard = () => {
     });
   }, []);
 
-  // todo: split day stuff to other component
   return (
       <div className="dashboard">
         <div className="dashboard__main-content">
@@ -66,24 +68,16 @@ const Dashboard = () => {
 
           { selectedAsteroids.length > 0 && <>
             <div className="dashboard__main-content__chart-data">
-              <div>
-                <p>Select one day to update the chart:</p>
-                {
-                  weekDays.map((day) => {
-                    const dateString = momentToDateString(day);
-                    return (
-                      <DayButton
-                        key={dateString}
-                        day={day}
-                        selected={selectedDay === dateString}
-                        onClick={selectDay}
-                      />
-                    )
-                  })
-                }
-              </div>
+              <ScatterPlotDaySelection
+                weekDays={weekDays}
+                selectedDay={selectedDay}
+                onDaySelection={selectDay}
+              />
               <ScatterPlotLegend
-                scaleMin={plotWindowRatio * 0.1} scaleMax={plotWindowRatio} radius={asteroidRadius} />
+                scaleMin={plotWindowRatio * 0.1}
+                scaleMax={plotWindowRatio}
+                radius={asteroidRadius}
+              />
             </div>
 
             <ScatterPlot
