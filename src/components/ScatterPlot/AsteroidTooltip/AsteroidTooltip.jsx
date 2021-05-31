@@ -4,29 +4,30 @@ import { AsteroidShape } from '../../../shared/utils/proptypes';
 
 import './AsteroidTooltip.scss';
 
-const AsteroidTooltip = ({ asteroid }) => {
-  return (
-    <div className="tooltip" style={{'--tooltip-x': `${asteroid.tooltipX}px`, '--tooltip-y': `${asteroid.tooltipY}px`}}>
-      <dl>
-        <dt>Name:</dt>
-        <dd>{ asteroid.name }</dd>
+/* eslint-disable react/prop-types */
+const AsteroidTooltip = ({ asteroid }) => (
+  <div className="tooltip" style={{'--tooltip-x': `${asteroid.tooltipX}px`, '--tooltip-y': `${asteroid.tooltipY}px`}}>
+    <dl>
+      <dt>Name:</dt>
+      <dd>{ asteroid.name }</dd>
 
-        <dt>Diameter:</dt>
-        <dd>{ asteroid.diameter }</dd>
+      <dt>Diameter:</dt>
+      <dd>{ asteroid.diameter }</dd>
 
-        <dt>Magnitude:</dt>
-        <dd>{ asteroid.magnitude }</dd>
+      <dt>Magnitude:</dt>
+      <dd>{ asteroid.magnitude }</dd>
 
-        <dt>Distance:</dt>
-        <dd>{ asteroid.distance }</dd>
+      <dt>Distance:</dt>
+      <dd>{ asteroid.distance }</dd>
 
-        <dt>Velocity:</dt>
-        <dd>{ asteroid.velocity }</dd>
-      </dl>
-    </div>
-  )
-}
+      <dt>Velocity:</dt>
+      <dd>{ asteroid.velocity }</dd>
+    </dl>
+  </div>
+)
+/* eslint-enable react/prop-types */
 
+/* eslint-disable react/prop-types */
 AsteroidTooltip.propTypes = {
   asteroid: PropTypes.shape({
     ...AsteroidShape,
@@ -34,5 +35,6 @@ AsteroidTooltip.propTypes = {
     tooltipY: PropTypes.number.isRequired,
   }).isRequired
 }
+/* eslint-enable react/prop-types */
 
 export default memo(AsteroidTooltip);

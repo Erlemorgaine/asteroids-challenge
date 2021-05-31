@@ -18,5 +18,21 @@ module.exports = {
         "react"
     ],
     "rules": {
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.spec.js",
+                "**/*.spec.jsx"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ],
+    "settings": {
+        "react": {
+            "version": "detect",
+        }
     }
 };

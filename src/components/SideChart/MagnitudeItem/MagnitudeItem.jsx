@@ -7,6 +7,7 @@ import './MagnitudeItem.scss';
 
 const MagnitudeItem = ({ className, asteroid }) => (
   <div className={`magnitude-item ${className}`}>
+    {/* eslint-disable react/prop-types */}
     <MagnitudeChart scale={asteroid.scale} id={asteroid.id} />
 
     <dl>
@@ -19,6 +20,7 @@ const MagnitudeItem = ({ className, asteroid }) => (
       <dt>Magnitude:</dt>
       <dd>{ asteroid.magnitude }</dd>
     </dl>
+    {/* eslint-enable react/prop-types */}
   </div>
 )
 
