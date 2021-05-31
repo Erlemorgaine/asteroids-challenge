@@ -2,7 +2,7 @@
 
 .side-chart {
   width: 30%;
-  $padding-v: 42px;
+  $padding-v: rem(42);
 
   > * {
     animation: fadeIn 0.3s;
@@ -14,30 +14,34 @@
 
   border-left: 1px solid $white;
   min-height: 100vh;
-  padding: $padding-v responsive-dimensions($dashboard-padding-h, 36px) $padding-v responsive-dimensions($dashboard-padding-h, 70px);
+  padding: $padding-v responsive-dimensions($dashboard-padding-h, rem(36)) $padding-v responsive-dimensions($dashboard-padding-h, rem(70));
 
   &__title {
-    margin-bottom: 41.5px;
+    margin-bottom: rem(41.5);
     text-decoration: underline;
     font-size: $text-large;
   }
 
   &__sub-title {
-    margin-bottom: 30.5px;
+    margin-bottom: rem(30.5);
     font-size: $text-base;
     text-transform: uppercase;
   }
 
   &__legend {
-    margin-bottom: 58px;
+    margin-bottom: rem(58);
     font-size: $text-small;
 
-    > p:first-child {
-      margin-bottom: 4px;
+    > p {
+      display: flex;
+
+      &:first-child {
+        margin-bottom: rem(4);
+      }
     }
 
     svg {
-      margin-right: 10.86px;
+      margin-right: rem(10.86);
     }
   }
 
@@ -49,7 +53,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      gap: 10px;
+      gap: rem(10);
 
       &__item {
         display: flex;

@@ -12,7 +12,7 @@
     font-size: $text-base;
     text-transform: uppercase;
     position: absolute;
-    top: 4px;
+    top: rem(4);
   }
 
   &__min, &__max {

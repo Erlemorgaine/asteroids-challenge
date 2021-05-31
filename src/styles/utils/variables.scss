@@ -17,9 +17,9 @@ $border-round: 50%;
 $screen-tablet-portrait: 768px;
 
 // Sizes
-$dashboard-padding-h: 26px;
+$dashboard-padding-h: rem(26);
 
 // Fonts
 $text-base: $font-base * 1px;
-$text-large: 20px;
-$text-small: 12px;
+$text-large: rem(20);
+$text-small: rem(12);

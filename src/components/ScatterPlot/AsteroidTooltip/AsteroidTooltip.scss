@@ -7,6 +7,5 @@
   top: var(--tooltip-y);
   left: var(--tooltip-x);
   border: 1px solid $white;
-  // todo: rem function
-  padding: 24.29px 33.59px 25.29px 34.59px;
+  padding: rem(24.29) rem(33.59) rem(25.29) rem(34.59);
 }

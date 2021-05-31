@@ -7,10 +7,10 @@
 
   &__main-content {
     width: 100%;
-    padding: 42px $dashboard-padding-h;
+    padding: rem(42) $dashboard-padding-h;
 
     &__title {
-      margin-bottom: 39px;
+      margin-bottom: rem(39);
       font-size: $text-large;
       text-decoration: underline;
     }
@@ -23,7 +23,7 @@
 
       // todo: this will go to other component
       p {
-        margin-bottom: 16px;
+        margin-bottom: rem(16);
       }
     }
   }

@@ -1,8 +1,10 @@
 @import "../../styles/utils/variables.scss";
 
 .day-button {
-  width: 35px;
-  height: 35px;
+  $button-dimensions: 35;
+
+  width: rem($button-dimensions);
+  height: rem($button-dimensions);
   border-radius: $border-round;
   text-align: center;
   color: $white;
@@ -11,7 +13,7 @@
   animation: fadeIn 0.3s;
 
   &:not(:last-child) {
-    margin-right: 5px;
+    margin-right: rem(5);
   }
 
   &.selected,

@@ -21,11 +21,11 @@
 
     > div {
       &:first-child {
-        margin-bottom: 19.8px;
+        margin-bottom: rem(19.8);
       }
 
       svg {
-        margin-right: 12px;
+        margin-right: rem(12);
       }
 
       span {
