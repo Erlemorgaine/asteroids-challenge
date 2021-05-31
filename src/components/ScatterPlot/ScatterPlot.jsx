@@ -78,6 +78,7 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
     } else {
       setLeaving(true);
       setIncomingAsteroids(scaledAsteroids);
+
       setTimeout(() => {
         setLeavingAsteroids(scaledAsteroids);
         setLeaving(false);

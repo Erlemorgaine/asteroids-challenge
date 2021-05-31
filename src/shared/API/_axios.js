@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// todo: use environment files
 /**
  * Exports a pre-configured instance of axios.
  */

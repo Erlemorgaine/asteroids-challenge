@@ -43,7 +43,7 @@ const Dashboard = () => {
   // Sets a ratio between the size in pixels of the scatter plot, and the width of the scatter plot viewbox.
   // Takes the base width (width of screen in which viewbox values match actual pixel values) to determine this ratio.
   useEffect(() => window.addEventListener('resize', () => {
-    setPlotWindowRatio(window.innerWidth / baseScreenWidth);
+    setPlotWindowRatio(+(window.innerWidth / baseScreenWidth).toFixed(2));
   }), [])
 
   // On mount, gets asteroids for the past week counting from today
@@ -74,7 +74,7 @@ const Dashboard = () => {
                 onDaySelection={selectDay}
               />
               <ScatterPlotLegend
-                scaleMin={plotWindowRatio * 0.1}
+                scaleMin={+(plotWindowRatio * 0.1).toFixed(2)}
                 scaleMax={plotWindowRatio}
                 radius={asteroidRadius}
               />

@@ -40,6 +40,11 @@
 
       .asteroid-outer-stroke {
         stroke-width: calc(1px * (1 / var(--scale-min)));
+
+        // In Firefox, the stroke seems to keep its normal width, and thus calculating it with the --scale-min makes it too large
+        @-moz-document url-prefix() {
+          stroke-width: 1px;
+        }
       }
 
       .asteroid-inner-circle {

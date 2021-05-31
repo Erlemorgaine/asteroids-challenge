@@ -1,7 +1,29 @@
+// Different animations for Chrome and other browsers, since the animation that I made
+// originally turned out not to work for Firefox and Safari. But since it looked cooler than just
+// fading, I wanted to leave it in here :)
+
 .incoming {
-  animation: flyIn 0.5s;
+  animation: fadeIn 0.5s;
+
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    animation: flyIn 0.5s;
+  }
+
+  @-moz-document url-prefix() {
+    animation: fadeIn 0.5s;
+  }
 }
 
 .outgoing {
-  animation: flyOut 0.5s backwards;
+  animation: fadeOut 0.5s;
+
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    animation: flyOut 0.5s backwards;
+  }
+
+  @-moz-document url-prefix() {
+    animation: fadeOut 0.5s;
+  }
 }
