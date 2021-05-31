@@ -72,4 +72,22 @@
   @media screen and (max-width: $screen-tablet-portrait) {
     margin-top: rem(24);
   }
+
+  @media screen and (max-width: $screen-mobile) {
+    display: grid;
+    width: fit-content;
+
+    &__title {
+      position: relative;
+      grid-row-start: 1;
+    }
+
+    &__min {
+      grid-row-start: 2;
+    }
+
+    &__max {
+      grid-row-start: 2;
+    }
+  }
 }

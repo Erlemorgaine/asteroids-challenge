@@ -16,10 +16,12 @@
 
   &__axes {
     position: absolute;
-    bottom: rem(-27.9);
+    bottom: rem(-26);
     text-transform: uppercase;
 
-    > div {
+    &__axis {
+      display: flex;
+
       &:first-child {
         margin-bottom: rem(19.8);
       }
@@ -30,6 +32,24 @@
 
       span {
         text-transform: lowercase;
+        margin-left: rem(4);
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-tablet-portrait) {
+    &__axes {
+      font-size: $text-smaller;
+      bottom: rem(-20);
+
+      &__axis {
+        &:first-child {
+          margin-bottom: rem(5);
+        }
+
+        svg {
+          transform: scale(0.8);
+        }
       }
     }
   }

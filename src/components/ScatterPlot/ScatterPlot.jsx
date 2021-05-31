@@ -120,8 +120,8 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
         </svg>
 
         <div className="scatter-plot__axes">
-          <div><ArrowUp /> Distance <span>(au)</span></div>
-          <div><ArrowRight /> Velocity <span>(km/s)</span></div>
+          <div className="scatter-plot__axes__axis"><ArrowUp /> Distance <span> (au)</span></div>
+          <div className="scatter-plot__axes__axis"><ArrowRight /> Velocity <span> (km/s)</span></div>
         </div>
       </div>
     )

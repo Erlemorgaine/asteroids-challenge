@@ -14,6 +14,7 @@ $black: #000;
 $border-round: 50%;
 
 // Screen sizes
+$screen-mobile: 480px;
 $screen-tablet-portrait: 768px;
 
 // Sizes
@@ -23,3 +24,4 @@ $dashboard-padding-h: rem(26);
 $text-base: $font-base * 1px;
 $text-large: rem(20);
 $text-small: rem(12);
+$text-smaller: rem(10);
