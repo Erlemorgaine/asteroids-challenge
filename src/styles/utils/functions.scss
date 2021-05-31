@@ -1,0 +1,9 @@
+$font-base: 13;
+
+@function responsive-dimensions($padding-small, $padding-large) {
+  @return clamp(#{$padding-small}, 5vw, #{$padding-large});
+};
+
+@function rem($target, $context: $font-base) {
+  @return calc((#{$target} / #{$context}) * 1rem);
+}

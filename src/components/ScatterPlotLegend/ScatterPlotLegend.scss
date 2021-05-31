@@ -1,23 +1,70 @@
 @import "../../styles/utils/variables.scss";
 
 .scatter-plot-legend {
+  $max-km-middle: calc((var(--dimensions) * 1px * var(--scale-max) / 2));
+
   display: flex;
+  position: relative;
   font-size: $text-small;
+  padding-right: responsive-dimensions(0px, rem(142));
 
   &__title {
     font-size: $text-base;
     text-transform: uppercase;
+    position: absolute;
+    top: 4px;
+  }
+
+  &__min, &__max {
+    position: relative;
+    height: fit-content;
+
+    svg {
+      transform-origin: top;
+    }
+
+    span {
+      position: absolute;
+      top: calc(#{$max-km-middle});
+      left: calc(50% + #{rem(15)});
+      transform: translateY(-50%);
+      white-space: nowrap;
+    }
   }
 
   &__min {
+    margin-left: rem(-44);
+
     svg {
-      transform: scale(var(--scale-min));
+      transform: translateY(calc(#{$max-km-middle} - var(--dimensions) * 0.1px)) scale(var(--scale-min));
+
+      .asteroid-outer-stroke {
+        stroke-width: calc(1px * (1 / var(--scale-min)));
+      }
+
+      .asteroid-inner-circle {
+        transform: scale(calc(1 / var(--scale-min)));
+      }
     }
   }
 
   &__max {
+    margin-left: responsive-dimensions(0px, rem(var(--dimensions) / 2));
+
     svg {
       transform: scale(var(--scale-max));
+
+      .asteroid-outer-stroke {
+        stroke-width: calc(1px * (1 / var(--scale-max)));
+      }
+
+      .asteroid-inner-circle {
+        transform: scale(calc(1 / var(--scale-max)));
+      }
     }
+  }
+
+  @media screen and (max-width: $screen-tablet-portrait) {
+    margin-top: rem(24);
   }
 }

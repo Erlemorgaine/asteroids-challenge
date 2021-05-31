@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Asteroid.scss';
 
-const Asteroid = ({ id, scale, x, y, radius, withGradient, onHover, className }) => (
+const Asteroid = ({ id, scale, x, y, radius, isLegend, onHover, className }) => (
   <g
     className={className}
     transform={`translate(${x}, ${y}) scale(${scale})`}
@@ -12,17 +12,20 @@ const Asteroid = ({ id, scale, x, y, radius, withGradient, onHover, className })
       <circle
         cx="49"
         cy="49"
-        r="44"
-        fill={withGradient ? 'url(#asteroid_radial)' : 'transparent'}
+        r={radius}
+        fill={isLegend ? 'transparent' : 'url(#asteroid_radial)'}
         fillOpacity="0.2"
         onMouseEnter={() => onHover(id)}
         onMouseOut={() => onHover(null)}
+        tabIndex={isLegend ? -1 : 0}
+        onFocus={() => onHover(id)}
+        onBlur={() => onHover(null)}
       />
-      <circle cx="49" cy="49" r="44" stroke="#2AF598" vectorEffect="non-scaling-stroke" />
+      <circle className="asteroid-outer-stroke" cx="49" cy="49" r={radius} stroke="#2AF598" vectorEffect="non-scaling-stroke" />
     </g>
-    <g filter="url(#filter1_d)">
-      <circle cx={`${radius}`} cy={`${radius}`} r="1" fill="#2AF598" />
-      <circle cx={`${radius}`} cy={`${radius}`} r="1" stroke="#2AF598"/>
+    <g className="asteroid-inner-circle" filter="url(#filter1_d)" transform={`scale(${ 1 / scale })`} transform-origin="center">
+      <circle cx="49" cy="49" r="1" fill="#2AF598" />
+      <circle cx="49" cy="49" r="1" stroke="#2AF598" />
     </g>
     <defs>
         <filter id="filter0_d" x="0.5" y="0.5" width="97" height="97" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -44,9 +47,9 @@ const Asteroid = ({ id, scale, x, y, radius, withGradient, onHover, className })
           <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
         </filter>
       {
-        withGradient &&
+        isLegend &&
         <radialGradient id="asteroid_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                        gradientTransform={`translate(${radius} ${radius}) rotate(90) scale(44)`}>
+                        gradientTransform={`translate(49 49) rotate(90) scale(${radius})`}>
           <stop stopColor="#2AF598" stopOpacity="0"/>
           <stop offset="1" stopColor="#2AF598"/>
         </radialGradient>
@@ -61,13 +64,13 @@ Asteroid.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
-  withGradient: PropTypes.bool,
+  isLegend: PropTypes.bool,
   onHover: PropTypes.func,
   className: PropTypes.string,
 }
 
 Asteroid.defaultProps = {
-  withGradient: true,
+  isLegend: false,
   onHover: () => {},
 }
 

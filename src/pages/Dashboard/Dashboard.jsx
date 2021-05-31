@@ -14,8 +14,8 @@ const Dashboard = () => {
   // pixel values correspond to the viewbox values.
   const plotViewboxWidth = 750;
   const plotViewboxHeight = 375;
-  const baseScreenWidth = 1062;
-  const asteroidRadius = 49;
+  const baseScreenWidth = 1000;
+  const asteroidRadius = 44;
 
   const [asteroids, setAsteroids] = useState({});
   const [selectedAsteroids, setSelectedAsteroids] = useState([]);

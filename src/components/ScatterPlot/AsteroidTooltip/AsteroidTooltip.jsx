@@ -8,19 +8,19 @@ const AsteroidTooltip = ({ asteroid }) => {
   return (
     <div className="tooltip" style={{'--tooltip-x': `${asteroid.tooltipX}px`, '--tooltip-y': `${asteroid.tooltipY}px`}}>
       <dl>
-        <dt>Name</dt>
+        <dt>Name:</dt>
         <dd>{ asteroid.name }</dd>
 
-        <dt>Diameter</dt>
+        <dt>Diameter:</dt>
         <dd>{ asteroid.diameter }</dd>
 
-        <dt>Magnitude</dt>
+        <dt>Magnitude:</dt>
         <dd>{ asteroid.magnitude }</dd>
 
-        <dt>Distance</dt>
+        <dt>Distance:</dt>
         <dd>{ asteroid.distance }</dd>
 
-        <dt>Velocity</dt>
+        <dt>Velocity:</dt>
         <dd>{ asteroid.velocity }</dd>
       </dl>
     </div>

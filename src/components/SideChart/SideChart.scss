@@ -14,7 +14,7 @@
 
   border-left: 1px solid $white;
   min-height: 100vh;
-  padding: $padding-v padding-h(36px) $padding-v padding-h(70px);
+  padding: $padding-v responsive-dimensions($dashboard-padding-h, 36px) $padding-v responsive-dimensions($dashboard-padding-h, 70px);
 
   &__title {
     margin-bottom: 41.5px;

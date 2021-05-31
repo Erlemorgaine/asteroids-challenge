@@ -84,15 +84,11 @@ const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius
       <div className="scatter-plot" ref={plotContainer}>
         { tooltipData && <AsteroidTooltip asteroid={tooltipData} /> }
         <svg
-          aria-labelledby="asteroid_plot"
           role="presentation"
           viewBox={`0 0 ${width} ${height}`}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title id="asteroid_plot" lang="en">
-            Scatter plot showing the asteroids for the selected day, positioned by distance and velocity and scaled by magnitude
-          </title>
           { leaving && leavingAsteroids.map(({ id, scale, x, y }) => <Asteroid
             key={id}
             id={id}

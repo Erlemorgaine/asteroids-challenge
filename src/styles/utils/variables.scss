@@ -1,3 +1,5 @@
+@import "functions";
+
 // Colors
 $primary: #2af598;
 $bg-1: #0a1d19;
@@ -18,6 +20,6 @@ $screen-tablet-portrait: 768px;
 $dashboard-padding-h: 26px;
 
 // Fonts
-$text-base: 13px;
+$text-base: $font-base * 1px;
 $text-large: 20px;
 $text-small: 12px;
