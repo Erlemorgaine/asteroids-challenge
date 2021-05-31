@@ -9,7 +9,7 @@ import AsteroidTooltip from './AsteroidTooltip/AsteroidTooltip';
 
 import './ScatterPlot.scss';
 
-const ScatterPlot = ({ asteroids, width, height, baseWidth, asteroidRadius, getPlotRef }) => {
+const ScatterPlot = ({ asteroids, width, height, plotWindowRatio, asteroidRadius }) => {
   const plotContainer = useRef(null);
 
   const [leavingAsteroids, setLeavingAsteroids] = useState([]);
@@ -34,19 +34,19 @@ const ScatterPlot = ({ asteroids, width, height, baseWidth, asteroidRadius, getP
 
   const asteroidXScale = useMemo(() => scaleLinear(
       [0, width - 100],
-    [0, plotContainer.current?.clientWidth - ((window.innerWidth / baseWidth) * 100)],
-    ), [plotContainer.current, width, baseWidth]);
+    [0, plotContainer.current?.clientWidth - (plotWindowRatio * 100)],
+    ), [plotContainer.current, width, plotWindowRatio]);
 
   const asteroidYScale = useMemo(() => scaleLinear(
       [0, height - 100],
-      [0, plotContainer.current?.clientHeight - ((window.innerWidth / baseWidth) * 100)],
-    ), [plotContainer.current, height, baseWidth]);
+      [0, plotContainer.current?.clientHeight - (plotWindowRatio * 100)],
+    ), [plotContainer.current, height, plotWindowRatio]);
 
   // todo: comment
   const onAsteroidHover = useCallback((id) => {
     if (id) {
       const hoveredAsteroid = incomingAsteroids.find((a) => a.id === id);
-      const offsetToCenter = (window.innerWidth / baseWidth) * asteroidRadius * hoveredAsteroid.scale;
+      const offsetToCenter = plotWindowRatio * asteroidRadius * hoveredAsteroid.scale;
 
       setTooltipData({
         ...hoveredAsteroid,
@@ -56,7 +56,7 @@ const ScatterPlot = ({ asteroids, width, height, baseWidth, asteroidRadius, getP
     } else {
       setTooltipData(null);
     }
-  }, [asteroids, setTooltipData, incomingAsteroids, asteroidXScale, asteroidYScale, baseWidth])
+  }, [asteroids, setTooltipData, incomingAsteroids, asteroidXScale, asteroidYScale, plotWindowRatio])
 
   // todo: comment
   useEffect(() => {
@@ -79,8 +79,6 @@ const ScatterPlot = ({ asteroids, width, height, baseWidth, asteroidRadius, getP
       }, 475);
     }
   }, [asteroids]);
-
-  useEffect(() => getPlotRef(plotContainer.current?.clientWidth), [plotContainer.current?.clientWidth]);
 
   return (
       <div className="scatter-plot" ref={plotContainer}>
@@ -131,9 +129,8 @@ ScatterPlot.propTypes = {
   asteroids: PropTypes.arrayOf(AsteroidPropTypes).isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  baseWidth: PropTypes.number.isRequired,
+  plotWindowRatio: PropTypes.number.isRequired,
   asteroidRadius: PropTypes.number.isRequired,
-  getPlotRef: PropTypes.func,
 }
 
 export default memo(ScatterPlot);

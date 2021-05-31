@@ -10,21 +10,19 @@ import { getWeekStartEndStringForDate, momentToDateString } from '../../shared/u
 import './Dashboard.scss';
 
 const Dashboard = () => {
+  // Define the viewbox width and -height of the scatterplot, and the screen size for which the plot's dimensions in actual
+  // pixel values correspond to the viewbox values.
+  const plotViewboxWidth = 750;
+  const plotViewboxHeight = 375;
+  const baseScreenWidth = 1062;
+  const asteroidRadius = 49;
+
   const [asteroids, setAsteroids] = useState({});
   const [selectedAsteroids, setSelectedAsteroids] = useState([]);
   const [brightestAsteroids, setBrightestAsteroids] = useState([]);
   const [selectedDay, setSelectedDay] = useState(momentToDateString(moment()));
   const [weekDays, setWeekDays] = useState([]);
-  const [plotRef, setPlotRef] = useState(null);
-
-  console.log(plotRef)
-
-  // Define the viewbox width and -height of the scatterplot, and the screen size for which the plot's dimensions in actual
-  // pixel values correspond to the viewbox values.
-  const plotViewboxWidth = 750;
-  const plotViewboxHeight = 375;
-  const baseScreenWidth = 1072;
-  const asteroidRadius = 49;
+  const [plotWindowRatio, setPlotWindowRatio] = useState(window.innerWidth / baseScreenWidth);
 
   const getBrightestAsteroids = useCallback((asteroidsByDate, amount = 5) =>
     Object
@@ -40,6 +38,10 @@ const Dashboard = () => {
     setSelectedDay(day);
     setSelectedAsteroids(asteroids[day]);
   }, [setSelectedDay, setSelectedAsteroids, asteroids]);
+
+  useEffect(() => window.addEventListener('resize', () => {
+    setPlotWindowRatio(window.innerWidth / baseScreenWidth);
+  }), [])
 
   // On mount, gets asteroids for the past week counting from today
   // Updates asteroids and weekDays with the returned values
@@ -80,15 +82,15 @@ const Dashboard = () => {
                   })
                 }
               </div>
-              <ScatterPlotLegend scaleMin={0.1} scaleMax={1} radius={asteroidRadius} />
+              <ScatterPlotLegend
+                scaleMin={plotWindowRatio * 0.1} scaleMax={plotWindowRatio} radius={asteroidRadius} />
             </div>
 
             <ScatterPlot
               asteroids={selectedAsteroids}
               width={plotViewboxWidth}
               height={plotViewboxHeight}
-              baseWidth={baseScreenWidth}
-              getPlotRef={setPlotRef}
+              plotWindowRatio={plotWindowRatio}
               asteroidRadius={asteroidRadius}
             />
           </> }
