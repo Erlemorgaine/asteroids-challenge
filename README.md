@@ -1,7 +1,6 @@
 # Asteroids Challenge
 
-This project was bootstrapped with [React](https://reactjs.org/) v17.\
-It was tested in Chrome 90, Safari 14, Firefox 88, and Edge.
+This project was made with [React](https://reactjs.org/) v17.
 
 ## Running the project
 
