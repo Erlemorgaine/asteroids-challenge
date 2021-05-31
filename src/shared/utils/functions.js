@@ -30,9 +30,10 @@ export function scaleLinear([domainMin, domainMax], [rangeMin, rangeMax]) {
  * @param getValueFunc
  * @return [number, number]
  */
-export function getMinMax(dataArray, getValueFunc) {
+export function getMinMax(dataArray, getValueFunc = x => x) {
     const mappedValue = dataArray.map(getValueFunc);
 
+    if (mappedValue.includes(undefined)) throw new Error('Your function returned an array with undefined items');
     if (mappedValue.length <= 2) return mappedValue;
 
     const sortedValue = mappedValue.sort((prev, next) => prev - next);
