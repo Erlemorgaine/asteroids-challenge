@@ -1,6 +1,5 @@
 import React, { memo, useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
-import DayButton from '../../components/DayButton/DayButton';
 import SideChart from '../../components/SideChart/SideChart';
 import ScatterPlot from '../../components/ScatterPlot/ScatterPlot';
 import ScatterPlotLegend from '../../components/ScatterPlotLegend/ScatterPlotLegend';

@@ -52,7 +52,7 @@ function momentErrorWrapper(date, func) {
     if (date instanceof moment) {
         return func(date);
     } else {
-        throw new Error(`Expected a date of type Moment but got type ${date.constructor.name}`)
+        throw new Error(`Expected a date of type Moment but got type ${date?.constructor.name}`)
     }
 }
 
@@ -98,8 +98,8 @@ export function getWeekStartEndStringForDate(date) {
     return momentErrorWrapper(
       date,
       (d) => [
-            momentToDateString(d),
-            momentToDateString(d.subtract(6, 'day'))
-        ]
+        momentToDateString(d.clone().subtract(6, 'day')),
+        momentToDateString(d)
+      ]
     );
 }

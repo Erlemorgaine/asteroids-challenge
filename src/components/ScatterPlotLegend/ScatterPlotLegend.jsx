@@ -6,7 +6,6 @@ import './ScatterPlotLegend.scss';
 
 const ScatterPlotLegend = ({ scaleMin, scaleMax, radius }) => {
   const asteroidDimensions = radius * 2 + 10;
-  console.log(scaleMin)
 
   return (
     <div className="scatter-plot-legend" style={{'--scale-min': scaleMin, '--scale-max': scaleMax, '--dimensions': asteroidDimensions}}>
